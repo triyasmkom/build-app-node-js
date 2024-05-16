@@ -1,0 +1,20 @@
+[
+  {
+    "model": "ABC",
+    "description": "Model GZ",
+    "cycleTime": 120,
+    "setting": 200
+  },
+  {
+    "model": "DEF",
+    "description": "Model DEF",
+    "cycleTime": 240,
+    "setting": 200
+  },
+  {
+    "model": "XYZ",
+    "description": "Model XYZ",
+    "cycleTime": 180,
+    "setting": 250
+  }
+]
