@@ -2,11 +2,21 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 const config = require('./app.config.json');
-const port = config.port || 10000;
+const dotenv = require('dotenv');
+
+// Mendapatkan path file .env dari argument command line atau variabel lingkungan
+const envPath = process.argv[2] || process.env.ENV_FILE_PATH || '.env';
+
+// Memuat variabel lingkungan dari file .env yang ditentukan
+dotenv.config({ path: envPath });
+
+const port = process.env.PORT || config.port || 10000;
 
 app.use(express.json());
 
-const filePath = './file.json';
+// Mendapatkan path file JSON dari argument command line atau variabel lingkungan
+const filePath = process.argv[2] || process.env.JSON_FILE_PATH || './file.json';
+
 
 // Fungsi untuk membaca file JSON
 function readJsonFile(filePath) {
@@ -102,4 +112,5 @@ app.delete('/data/:model', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Using JSON file: ${filePath}`)
 });
